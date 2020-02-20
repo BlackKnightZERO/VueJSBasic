@@ -1,0 +1,24 @@
+.tab{
+    border :1px solid #4c4c4c;
+    width: 950px;
+    min-height: 95px;
+    background: #ffffff;
+    margin: 43px auto;
+}
+.tab ul{
+    margin: 0;
+    list-style: none;
+    background: #858585;
+}
+.tab li{
+    display: inline-block;
+    cursor: pointer;
+    padding: 9px;
+    margin-top: 9px;
+}
+.tab li.active{
+    background: #ffffff;
+}
+.details{
+    padding: 40px;
+}

@@ -1,0 +1,36 @@
+body{
+    background: #e3e3e3;
+}
+/* ====== modal ===== */
+.modal{
+    position :fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+.modalContent{
+    width: 950px;
+    background: #fff;
+    margin-top: 90px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.modalHeader{
+    background: #efefef;
+    font-weight: bold;
+    padding: 16px 9px;
+    color: #505050;
+}
+.modalBody{
+    padding: 22px;
+    background: #fff;
+    min-height: 220px;
+}
+.modalFooter{
+    background: #D1D1D1;
+    font-weight: bold;
+    padding: 9px;
+    color: #505050;
+}

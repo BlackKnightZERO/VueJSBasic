@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="105style.css">
+    <link rel="stylesheet" href="106style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
     <style>
   
@@ -15,35 +15,23 @@
 <?php 
     include('navigation.php');
     ?>
-    <h3>Custom Components with Event</h3>
+    <h3>Component Communication & Custom Event</h3>
     
     <div id="root">
-        <!-- <div class="panel">
-            <div class="panelTitle">
-                Panel Title
-            </div>
-            <div class="panelContent">
-                Content
-            </div>
-        </div> -->
 
-        <cust-panel title="Title" content="This is panel content">
-            
-        </cust-panel>
+    <button @click="showLogin=true">Login</button>
+        <modal v-if="showLogin" @onsave="showLogin=false">
+            <template slot="header">
+                This is modal header
+            </template>
+            <template slot="body">
+                <h2>header</h2>
+                <input type="text">
+            </template>
+        </modal>
 
-        <cust-panel title="Title2" content="This is panel content">
-            
-        </cust-panel>
-
-        <cust-panel title="Title3">
-                <h4>Enter:</h4>
-                <input type="text" name="">
-                <button>submit</button>
-        </cust-panel>
 
     </div>
-
-    
 
     <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -51,34 +39,28 @@
 
     <script>
         //global custom component
-        Vue.component("cust-panel", {
+        Vue.component("modal", {
             template: `
-                <div class="panel" v-if="show">
-                    <div class="panelTitle">
-                    <div class="close" @click="show=flase">
-                    X
+                <div class="modal">
+                    <div class="modalContent">
+                        <div class="modalHeader">
+                            <slot name="header"></slot>
+                        </div>
+                        <div class="modalBody">
+                            <slot name="body"></slot>
+                        </div>
+                        <div class="modalFooter">
+                            <button @click="$emit('onsave')">Save</button>
+                            <button>Cancel</button>
+                        </div>
                     </div>
-                        {{ title }} 
-                    </div>
-                    <div class="panelContent">
-                        {{ content }}
-                        <slot></slot>
-                    </div>
-                   
                 </div>
             `,
-            props: ["title", "content"],
-            data: function(){
-                return {
-                    show: true
-                }
-            }
         });
-
         var app = new Vue({
             el: '#root',
             data:{
-               
+               showLogin: false
             },       
         });
     </script>
